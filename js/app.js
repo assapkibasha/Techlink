@@ -133,24 +133,25 @@
     $("grid-loading").hidden = true;
     renderChips();
     renderGrid();
-    renderHeroCards();
+    renderCategoryTiles();
   }
 
-  // ---------- rendering: hero ----------
+  // ---------- rendering: shop-by-category tiles ----------
 
-  function renderHeroCards() {
-    const featured = state.products.filter((p) => p.featured).slice(0, 2);
-    const demo = state.products.filter((p) => p.source === "demo" && p.category === "iphone");
-    const picks = featured.concat(demo.slice(0, 1)).slice(0, 3);
-    $("hero-cards").innerHTML = picks
-      .map(
-        (p) => `
-        <div class="hero-card">
-          <img src="${p.image}" alt="" loading="lazy" />
-          <strong>${escapeHtml(p.title)}</strong>
-          <span>${formatPrice(p.price)}</span>
-        </div>`
-      )
+  function renderCategoryTiles() {
+    const keys = ["iphone", "samsung", "pixel", "computers", "tablets", "accessories"];
+    $("cat-tiles").innerHTML = keys
+      .map((key) => {
+        const items = state.products.filter((p) => p.category === key);
+        if (!items.length) return "";
+        // prefer a demo product for the tile photo (real image, not placeholder)
+        const cover = items.find((p) => p.source === "demo") || items[0];
+        return `
+        <button class="cat-tile" data-cat="${key}" aria-label="Shop ${CATEGORY_LABELS[key]}">
+          <span class="cat-tile-media"><img src="${cover.image}" alt="" loading="lazy" /></span>
+          <span class="cat-tile-label">${CATEGORY_LABELS[key]}<em>${items.length} items</em></span>
+        </button>`;
+      })
       .join("");
   }
 
@@ -224,9 +225,8 @@
             ${p.source === "store" ? '<span class="badge-store">In store</span>' : ""}
           </button>
           <div class="card-body">
-            <span class="tag">${CATEGORY_LABELS[p.category] || p.category}</span>
-            <button class="card-title" data-view="${p.id}">${escapeHtml(p.title)}</button>
             <span class="card-price">${formatPrice(p.price)}</span>
+            <button class="card-title" data-view="${p.id}">${escapeHtml(p.title)}</button>
             <div class="card-actions">
               <button class="add ${inOrder ? "added" : ""}" data-add="${p.id}">
                 ${inOrder ? "✓ In order" : "Add to order"}
@@ -414,6 +414,15 @@
       renderGrid();
     });
 
+    $("cat-tiles").addEventListener("click", (e) => {
+      const tile = e.target.closest("[data-cat]");
+      if (!tile) return;
+      state.filter = tile.dataset.cat;
+      renderChips();
+      renderGrid();
+      $("catalogue").scrollIntoView({ behavior: "smooth" });
+    });
+
     $("search-input").addEventListener("input", (e) => {
       state.query = e.target.value.trim();
       renderGrid();
@@ -492,6 +501,6 @@
     $("grid-loading").hidden = true;
     renderChips();
     renderGrid();
-    renderHeroCards();
+    renderCategoryTiles();
   });
 })();
