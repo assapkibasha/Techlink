@@ -134,6 +134,41 @@
     renderChips();
     renderGrid();
     renderCategoryTiles();
+    renderHeroMock();
+  }
+
+  // ---------- rendering: hero storefront mockup ----------
+
+  function renderHeroMock() {
+    const demo = state.products.filter((p) => p.source === "demo");
+    const pool = demo.length ? demo : state.products;
+    if (!pool.length) return;
+    const phones = pool.filter((p) =>
+      ["iphone", "samsung", "pixel", "other"].includes(p.category)
+    );
+
+    $("mock-banner-imgs").innerHTML = (phones.length ? phones : pool)
+      .slice(0, 3)
+      .map((p) => `<img src="${p.image}" alt="" loading="lazy" />`)
+      .join("");
+
+    // one thumbnail per category for variety
+    const seen = new Set();
+    const thumbs = [];
+    for (const p of pool) {
+      if (!seen.has(p.category)) {
+        seen.add(p.category);
+        thumbs.push(p);
+      }
+      if (thumbs.length === 4) break;
+    }
+    $("mock-thumbs").innerHTML = thumbs
+      .map((p) => `<div class="mock-thumb"><img src="${p.image}" alt="" loading="lazy" /><i></i></div>`)
+      .join("");
+
+    const star = phones[0] || pool[0];
+    $("mock-product-img").src = star.image;
+    $("mock-product-price").textContent = formatPrice(star.price);
   }
 
   // ---------- rendering: shop-by-category tiles ----------
@@ -428,6 +463,14 @@
       renderGrid();
     });
 
+    $("hero-search").addEventListener("submit", (e) => {
+      e.preventDefault();
+      state.query = $("hero-search-input").value.trim();
+      $("search-input").value = state.query;
+      renderGrid();
+      $("catalogue").scrollIntoView({ behavior: "smooth" });
+    });
+
     $("sort-select").addEventListener("change", (e) => {
       state.sort = e.target.value;
       renderGrid();
@@ -502,5 +545,6 @@
     renderChips();
     renderGrid();
     renderCategoryTiles();
+    renderHeroMock();
   });
 })();
