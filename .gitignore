@@ -1,0 +1,17 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+
+# secrets — never commit real credentials
+.env
+.env.*
+!.env.example
+
+# misc
+*.log
+node_modules/

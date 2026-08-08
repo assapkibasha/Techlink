@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Techlink logo placeholder">
+  <!-- PLACEHOLDER logo — replace this file with the real Techlink logo -->
+  <rect width="64" height="64" rx="16" fill="#0E1526"/>
+  <!-- T -->
+  <rect x="14" y="16" width="24" height="7" rx="3.5" fill="#2B44FF"/>
+  <rect x="22.5" y="16" width="7" height="26" rx="3.5" fill="#2B44FF"/>
+  <!-- link node -->
+  <circle cx="44" cy="44" r="6" fill="none" stroke="#1BA654" stroke-width="4"/>
+  <line x1="33" y1="36" x2="40" y2="41" stroke="#1BA654" stroke-width="4" stroke-linecap="round"/>
+</svg>

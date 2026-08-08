@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#EEF1F5"/>
+  <rect x="148" y="68" width="104" height="224" rx="10" fill="#3A3F4A"/>
+  <rect x="154" y="74" width="92" height="212" rx="6" fill="#F3F5F8"/>
+  <!-- vertical camera stack -->
+  <circle cx="172" cy="100" r="8" fill="#3A3F4A"/>
+  <circle cx="172" cy="126" r="8" fill="#3A3F4A"/>
+  <circle cx="172" cy="152" r="8" fill="#3A3F4A"/>
+  <circle cx="172" cy="176" r="6" fill="#3A3F4A"/>
+  <!-- s-pen -->
+  <rect x="268" y="110" width="10" height="150" rx="5" fill="#3A3F4A"/>
+  <polygon points="268,110 278,110 273,96" fill="#3A3F4A"/>
+  <text x="200" y="365" text-anchor="middle" font-family="monospace" font-size="16" fill="#5B6474">Galaxy S24 Ultra — photo soon</text>
+</svg>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Techlink — Phones &amp; Computers, ordered on WhatsApp</title>
+  <meta name="description" content="Techlink electronics shop. Browse iPhones, Samsung, Google Pixel phones and computers, then order directly on WhatsApp." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="Techlink home">
+        <!-- Replace assets/logo.svg with the real logo when available -->
+        <img src="assets/logo.svg" alt="" class="brand-mark" width="36" height="36" />
+        <span class="brand-name">TECHLINK</span>
+      </a>
+
+      <div class="header-search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14" y1="14" x2="18" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input id="search-input" type="search" placeholder="Search phones, laptops…" aria-label="Search products" autocomplete="off" />
+      </div>
+
+      <button class="order-btn" id="open-order" aria-label="Open your order">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7 3 3 6.9 3 11.7c0 2.7 1.3 5 3.3 6.6L5.6 21l3-1.2c1 .3 2.2.5 3.4.5 5 0 9-3.9 9-8.7S17 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span>Order</span>
+        <span class="order-count" id="order-count" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Electronics shop · Orders on WhatsApp</p>
+        <h1>Phones &amp; computers,<br /><em>one message away.</em></h1>
+        <p class="hero-sub">Browse the catalogue, add what you like, and your order lands straight in our WhatsApp chat — price, delivery and warranty confirmed right there.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalogue">Browse products</a>
+          <a class="btn btn-whatsapp" id="hero-chat" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7 3 3 6.9 3 11.7c0 2.7 1.3 5 3.3 6.6L5.6 21l3-1.2c1 .3 2.2.5 3.4.5 5 0 9-3.9 9-8.7S17 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Chat with us
+          </a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong>iPhone · Samsung · Pixel</strong><span>Official models</span></li>
+          <li><strong>Laptops &amp; desktops</strong><span>Work-ready</span></li>
+          <li><strong>Reply in minutes</strong><span>Real humans</span></li>
+        </ul>
+      </div>
+      <div class="hero-cards" id="hero-cards" aria-hidden="true">
+        <!-- Featured mini-cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOGUE ============ -->
+  <main id="catalogue" class="catalogue">
+    <div class="catalogue-head">
+      <h2>The catalogue</h2>
+      <div class="toolbar">
+        <div class="chip-rail" id="chip-rail" role="tablist" aria-label="Product categories">
+          <!-- Category chips injected by JS -->
+        </div>
+        <div class="toolbar-right">
+          <span class="result-count" id="result-count" aria-live="polite"></span>
+          <select id="sort-select" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="product-grid">
+      <!-- Product cards injected by JS -->
+    </div>
+
+    <div class="grid-empty" id="grid-empty" hidden>
+      <p><strong>No products match your search.</strong></p>
+      <p>Try another word, or pick a different category above.</p>
+    </div>
+
+    <div class="grid-loading" id="grid-loading">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Loading products…</p>
+    </div>
+  </main>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how">
+    <h2>How ordering works</h2>
+    <ol class="how-steps">
+      <li>
+        <span class="how-key">Pick</span>
+        <p>Tap <em>Add to order</em> on anything you like. Your order builds itself in the corner.</p>
+      </li>
+      <li>
+        <span class="how-key">Preview</span>
+        <p>Open your order and read the exact message before anything is sent. No accounts, no checkout forms.</p>
+      </li>
+      <li>
+        <span class="how-key">Send</span>
+        <p>One tap opens WhatsApp with your order written out. We confirm availability, price and delivery in the chat.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="" width="32" height="32" />
+        <span>TECHLINK</span>
+        <p>Phones, computers and accessories — genuine devices, fair prices, ordered over WhatsApp.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <a href="#catalogue" data-cat="iphone">iPhone</a>
+        <a href="#catalogue" data-cat="samsung">Samsung</a>
+        <a href="#catalogue" data-cat="pixel">Google Pixel</a>
+        <a href="#catalogue" data-cat="computers">Computers</a>
+      </div>
+      <div class="footer-col">
+        <h3>Talk to us</h3>
+        <a id="footer-wa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+        <span id="footer-number" class="footer-number"></span>
+        <span>Mon–Sat, 8:00–19:00</span>
+      </div>
+    </div>
+    <p class="footer-fine">© <span id="year"></span> Techlink. Product photos are illustrative; final price confirmed on WhatsApp.</p>
+  </footer>
+
+  <!-- ============ ORDER DRAWER (signature: chat composer) ============ -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <header class="drawer-head">
+      <h2 id="drawer-title">Your order</h2>
+      <button class="icon-btn" id="close-drawer" aria-label="Close order">✕</button>
+    </header>
+
+    <div class="drawer-body">
+      <div class="drawer-empty" id="drawer-empty">
+        <p><strong>Nothing here yet.</strong></p>
+        <p>Tap <em>Add to order</em> on any product and it will appear in this list.</p>
+      </div>
+
+      <ul class="drawer-items" id="drawer-items"></ul>
+
+      <div class="composer" id="composer" hidden>
+        <p class="composer-label">Message preview — this is exactly what we receive:</p>
+        <div class="bubble" id="bubble"></div>
+      </div>
+    </div>
+
+    <footer class="drawer-foot" id="drawer-foot" hidden>
+      <div class="drawer-total">
+        <span>Estimated total</span>
+        <strong id="drawer-total"></strong>
+      </div>
+      <a class="btn btn-whatsapp btn-block" id="send-order" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7 3 3 6.9 3 11.7c0 2.7 1.3 5 3.3 6.6L5.6 21l3-1.2c1 .3 2.2.5 3.4.5 5 0 9-3.9 9-8.7S17 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Send order on WhatsApp
+      </a>
+      <p class="drawer-note">Prices are estimates — we confirm the final price in the chat.</p>
+    </footer>
+  </aside>
+
+  <!-- ============ PRODUCT MODAL ============ -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-card">
+      <button class="icon-btn modal-close" id="close-modal" aria-label="Close product details">✕</button>
+      <div class="modal-media"><img id="modal-img" src="" alt="" /></div>
+      <div class="modal-info">
+        <span class="tag" id="modal-tag"></span>
+        <h2 id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-meta" id="modal-meta"></div>
+        <div class="modal-price" id="modal-price"></div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modal-add">Add to order</button>
+          <a class="btn btn-whatsapp" id="modal-wa" href="#" target="_blank" rel="noopener">Order this on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
