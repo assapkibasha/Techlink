@@ -52,3 +52,4 @@ Or deploy the folder as-is to GitHub Pages, Netlify, Vercel, or any web host.
 - Google Fonts: Unbounded (display), Hanken Grotesk (body), Spline Sans Mono (prices)
 - [dummyjson.com](https://dummyjson.com) for demo product data
 - `wa.me` deep links for WhatsApp ordering
+- Hero photo from [Pexels](https://www.pexels.com/photo/8125085/) (free Pexels license)
